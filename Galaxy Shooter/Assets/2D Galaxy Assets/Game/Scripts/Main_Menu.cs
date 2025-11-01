@@ -30,7 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Debug.Log("Return");
 
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Single_Player_V");
         Time.timeScale = 1.0f;
     }
 

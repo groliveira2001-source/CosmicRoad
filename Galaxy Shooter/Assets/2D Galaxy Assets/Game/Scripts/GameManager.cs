@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public bool isCoop = false;
 
+    public int ispause = 0;
 
 
     [SerializeField]
@@ -41,19 +42,31 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-     
-        
 
-            if (Input.GetKeyDown(KeyCode.P))
+
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (ispause == 0)
             {
-            _uiManager.PauseScreen.SetActive(true);
-          
-            Time.timeScale = 0f;
+                _uiManager.PauseScreen.SetActive(true);
 
+                Time.timeScale = 0f;
+
+                ispause = 1;
             }
+            else if (ispause == 1)
+            {
+                _uiManager.PauseScreen.SetActive(false);
 
-        
-        
+                Time.timeScale = 1f;
+
+                ispause = 0;
+            }
+        }
+
+
+
 
         if (gameOver == true)
         {
@@ -113,7 +126,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-  
+
+
+
+
 }
 
 
