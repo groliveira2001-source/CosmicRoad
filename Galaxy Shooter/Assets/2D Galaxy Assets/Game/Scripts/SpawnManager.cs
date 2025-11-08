@@ -13,6 +13,15 @@ public class Spawn : MonoBehaviour
     [SerializeField]
     private GameObject[] powerups;//ficed list of objects of the same nature
 
+    [SerializeField] 
+    private GameObject EnemyHorizontalPrefab;
+
+    [SerializeField] 
+    private GameObject EnemyAlertPrefab;
+
+    [SerializeField] private Transform uiCanvas;
+
+
     private GameManager _gameManager;
 
    private UIManager _uiManager;
@@ -32,9 +41,11 @@ public class Spawn : MonoBehaviour
     {
         StartCoroutine(EnemySpawnRoutine());
         StartCoroutine(PowerUpSpawnRoutine());
+        StartCoroutine(EnemyHorizontalRoutine());
     }
-        
-    
+
+
+
 
     IEnumerator EnemySpawnRoutine()
     {
@@ -74,6 +85,37 @@ public class Spawn : MonoBehaviour
         
     }
 
-    
+    IEnumerator EnemyHorizontalRoutine()
+    {
+        while (_gameManager.gameOver == false && _uiManager.EndGame == false)
+        {
+            // Mostra o alerta na UI
+            GameObject alert = Instantiate(EnemyAlertPrefab, uiCanvas);
+            alert.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -460);
+            Destroy(alert, 1.5f);
+
+            // Espera um pouco antes de spawnar o inimigo (tempo do alerta)
+            yield return new WaitForSeconds(1.5f);
+
+            // Spawna o inimigo depois do alerta
+            Instantiate(EnemyHorizontalPrefab, new Vector3(0, -3.8f, 0), Quaternion.identity);
+
+            // Ajusta o intervalo conforme a pontuação
+            float spawnDelay = 5f;
+            if (_uiManager.score > 500) spawnDelay = 15f;
+            if (_uiManager.score > 1500) spawnDelay = 10f;
+            if (_uiManager.score > 3000) spawnDelay = 7f;
+            if (_uiManager.score > 5000) spawnDelay = 5f;
+            if (_uiManager.score > 8000) spawnDelay = 3.5f;
+
+            // Espera antes de mostrar o próximo alerta
+            yield return new WaitForSeconds(Random.Range(spawnDelay - 2f, spawnDelay + 2f));
+        }
+    }
+
+
+
+
+
 
 }
