@@ -121,7 +121,7 @@ MonoBehaviour:
   _TripleShoot: {fileID: 5128581586817271897, guid: d16f82c8bc998a54bb54aed8ea87d0e5, type: 3}
   _laserPrefab: {fileID: 2335266530815821414, guid: a74cac4153561174f9fb2432af03b54f, type: 3}
   _FireRate: 0.25
-  _speed: 4
+  _speed: 5.5
   _clip: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
   IsAlive: 1
 --- !u!61 &2956155399128892415

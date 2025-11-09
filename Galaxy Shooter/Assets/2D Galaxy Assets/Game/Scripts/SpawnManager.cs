@@ -49,8 +49,9 @@ public class Spawn : MonoBehaviour
 
     IEnumerator EnemySpawnRoutine()
     {
-       
- 
+        yield return new WaitForSeconds(5f);
+
+
         float RandomX = Random.Range(-7, 7);
 
 
@@ -69,7 +70,8 @@ public class Spawn : MonoBehaviour
     IEnumerator PowerUpSpawnRoutine()
     {
 
-        
+
+        yield return new WaitForSeconds(5f);
 
 
         while (_gameManager.gameOver == false && _uiManager.EndGame == false)
@@ -87,6 +89,9 @@ public class Spawn : MonoBehaviour
 
     IEnumerator EnemyHorizontalRoutine()
     {
+
+        yield return new WaitForSeconds(5f);
+
         while (_gameManager.gameOver == false && _uiManager.EndGame == false)
         {
             // Mostra o alerta na UI
@@ -101,12 +106,12 @@ public class Spawn : MonoBehaviour
             Instantiate(EnemyHorizontalPrefab, new Vector3(0, -3.8f, 0), Quaternion.identity);
 
             // Ajusta o intervalo conforme a pontuação
-            float spawnDelay = 5f;
-            if (_uiManager.score > 500) spawnDelay = 15f;
-            if (_uiManager.score > 1500) spawnDelay = 10f;
-            if (_uiManager.score > 3000) spawnDelay = 7f;
-            if (_uiManager.score > 5000) spawnDelay = 5f;
-            if (_uiManager.score > 8000) spawnDelay = 3.5f;
+            float spawnDelay = 20f;
+            if (_uiManager.score > 200) spawnDelay = 15f;
+            if (_uiManager.score > 500) spawnDelay = 10f;
+            if (_uiManager.score > 800) spawnDelay = 7f;
+            if (_uiManager.score > 1000) spawnDelay = 5f;
+            if (_uiManager.score > 2500) spawnDelay = 3f;
 
             // Espera antes de mostrar o próximo alerta
             yield return new WaitForSeconds(Random.Range(spawnDelay - 2f, spawnDelay + 2f));
