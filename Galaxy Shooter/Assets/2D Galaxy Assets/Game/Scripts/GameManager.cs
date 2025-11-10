@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
 
                 ispause = 1;
+
+               
             }
             else if (ispause == 1)
             {
