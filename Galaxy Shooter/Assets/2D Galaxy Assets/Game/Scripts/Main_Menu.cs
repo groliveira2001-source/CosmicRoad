@@ -39,4 +39,9 @@ public class NewBehaviourScript : MonoBehaviour
         _uimanager.PauseScreen.SetActive(false);
         Time.timeScale = 1.0f;     
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

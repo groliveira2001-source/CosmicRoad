@@ -12,11 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     public GameObject titleScreen;
 
-    [SerializeField]
-    public GameObject VideoShow;
-
-    [SerializeField] 
-    public GameObject PauseScreen;
+    [SerializeField]  public GameObject PauseScreen;
 
     [SerializeField]
     public GameObject YouWin;
@@ -113,7 +109,7 @@ public class UIManager : MonoBehaviour
     public void HideTitleScreen()
     {
         titleScreen.SetActive(false);
-        VideoShow.SetActive(false);
+
         scoreText.text = "Score:"+0;
         ESC = true;
     }
