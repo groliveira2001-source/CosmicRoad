@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Debug.Log("Single");
 
-        SceneManager.LoadScene("Single_Player_V");
+        SceneManager.LoadScene("Historia");
     }
 
     public void Start_Coop()
